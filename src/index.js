@@ -122,7 +122,7 @@ io.on('connection', function(socket) {
 			}
 			iFile += ".png";
 
-			fs.writeFile("/var/www/workwork.fun/opart/images/"+iFile, base64Data, 'base64', function(err) {
+			fs.writeFile("/root/projects/screenchat/src/images/"+iFile, base64Data, 'base64', function(err) {
 			  console.log(err);
 			});
 

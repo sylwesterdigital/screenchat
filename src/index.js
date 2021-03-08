@@ -16,7 +16,7 @@ global.atob = require("atob");
 var domain = "goralskieveto.org"
 var servername = "mielniczuk.com";
 var myhost = JSON.stringify(os.hostname());
-var serverPort = 3773;
+var serverPort = 7654;
 
 console.log('hostname: ',JSON.stringify(os.hostname()));
 console.log('is local: ',os.hostname().indexOf("local"));

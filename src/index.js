@@ -30,7 +30,7 @@ console.log('is local: ',os.hostname().indexOf("local"));
 
 if (app.settings.env != "development") {
   var options_server = {
-    key: fs.readFileSync('/etc/letsencrypt/live/'+domain+'privkey.pem')
+    key: fs.readFileSync('/etc/letsencrypt/live/'+domain+'/privkey.pem')
     , cert: fs.readFileSync('/etc/letsencrypt/live/'+domain+'/fullchain.pem')
   };
   console.log('SSL options_server')

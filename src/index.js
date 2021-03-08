@@ -13,6 +13,7 @@ var app = express();
 global.atob = require("atob");
 
 
+var domain = "goralskieveto.org"
 var servername = "mielniczuk.com";
 var myhost = JSON.stringify(os.hostname());
 var serverPort = 3773;
@@ -29,8 +30,8 @@ console.log('is local: ',os.hostname().indexOf("local"));
 
 if (app.settings.env != "development") {
   var options_server = {
-    key: fs.readFileSync('/etc/letsencrypt/live/workwork.fun/privkey.pem')
-    , cert: fs.readFileSync('/etc/letsencrypt/live/workwork.fun/fullchain.pem')
+    key: fs.readFileSync('/etc/letsencrypt/live/'+domain+'privkey.pem')
+    , cert: fs.readFileSync('/etc/letsencrypt/live/'+domain+'/fullchain.pem')
   };
   console.log('SSL options_server')
   options = options_server;

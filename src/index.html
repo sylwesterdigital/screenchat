@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC/0lEQVQ4T21TW2hUVxRd+9x7Z5yZVEd01KbEB5WoBbWWgNEvP1SwohQl1hr0R8QPQbA//bJI/wUp2E+/BKmiP4qCP6kvSGRi1TjTqEmcZh6J88iMc+dxX+fscmeasaGer3M4e6299mYtQusQAG5fP3kIDCUIpPiCEnRBqPkyaoN9uBQE/6NNxgOs4QYrgsaJARmIxYqB2K7lDo7AJYhOtzYawN19xcX93y2j0mT2M1IclVXXiyeTzp4f9uczw1Mbo0wmVsJaN702MzL9NNI/sqPqN2oRMDPhBkQp2zggbWd3PVlZPlktrNaVlox9vuSZVhODjuO+qFUr5ZLE07DJw7tH+t//O3xbcuExd8u3jV90C4N2qRlIvZuhFYGQIiPoSAuLdBIq27QLece++kUUl28O3aHu19rsvAJRe2hvsEr0s9Do+3q6SW6uikAkBKUItqcQETrScxaPPojnXatx11Diiu7x2DyBZj7H9lrO+y0YElu46pGuAXbGRZ4UVjoESwn8PVVBoTz30iqZPxXffBg6O7HPpgZzjwdukIujxTF5OLyIdpHBRFkGhxVQIzSnPNgfXCSf5VUqlb7T4xrniiqcPj3a55LNapMH6qpnUHFD3jV2sNXLKT3SpdDUCPBJkhrKCRupiSIS41lziYieOnN/8++tJdaZvwFcUS8Y47xYnW8UeBA6dQvdJSsBaEGCEWK8eaXwLm+rcjwz0mPaB4/d7iu2CCxW6z2QCXibPVubqjb5R0nyJJcp6EhJCAGVWWB0WHrlHO7bdfdV73Tu0vFbX834pusYyX8wKxpP4FDT4wEpaW+tZi1Vaw24dVFMjbmPXj8xK1+vWHb+RC9m6YiQHSN17MtMf0ziyzUO1r3XMKhMeTQXEQ3Hw+1gmS5W75kzXRNdcwPXSRFRy87/UdC2dMuVYOPlX+idjeHXnElxOc7XNq2iuZ3bkCaiTpAWOHFhKlvjGEMS3y7V+ME2EpV4nMN9faLxMay+gAU7+H+O/2QV9cEfyedr2mB/B/8AHRigux2gM+gAAAAASUVORK5CYII=" />
+  <title>WORKWORK.FUN</title>
+  <link href="/styles/chat.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon">
+  <script src="/js/crypto-js/crypto-js.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/plugins/ScrollToPlugin.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="container"></div>
+ 
+  <div id="top-messages-wrap">
+    <div id="top-messages">
+      <div id="online-check-b"></div>
+      <div id="profile-b" class="no-sel"></div>
+    </div>
+  </div>
+  
+  <div id="messages-wrap">
+    <div id="messages"></div>
+  </div>
+
+
+
+  <div id="file-reader-cont">
+    <div id="file-reader-wrap">
+      <canvas id="pixelitcanvas"></canvas> 
+      <img class="object-fit-cover" id="preview-image" alt="">
+      <img class="object-fit-cover" id="orig-image" alt="">
+    </div>
+    
+    <div id="action-reader-c">
+          <div class="round-b" id="cancel-reader-b"></div>    
+      <div id="action-reader-holder">
+       
+        <div class="animate-flicker b-shadow" id="send-reader-b"></div>
+        
+
+        
+        
+      </div>
+    </div>
+    
+  </div>
+   
+  <div id="profile-c" class="hidden">
+    <div id="profile-wrap">
+    
+     <p class="p-hint">Click to change</p> 
+       <div id="profile-avatar" class="no-sel"></div>
+           
+      
+      <textarea id="ta-nickname" class="ta-profiles" name="nickname" placeholder="Nickname" cols="20" rows="1" maxlength="16"></textarea>
+      
+      <textarea id="ta-bio" class="ta-profiles" name="bio" placeholder="Bio" cols="20" rows="1" maxlength="24"></textarea>
+    <p class="p-hint">You sure? save your update!</p>
+    
+     <div class="round-b" id="profile-save-b">Save</div>            
+
+      
+      
+    </div>
+  </div>
+
+  <div id="text-msg">
+    <div id="text-msg-wrap">
+      <div id="attachment-b-holder">
+        <div id="attachment-b"></div>
+        <input type="file" id="file1" onchange="previewFile()" accept="image/*" style="display:none">
+
+      </div>
+      <div id="form-txt-holder">
+        <textarea id="m" cols="auto" rows="1"></textarea>
+      </div>
+      <div id="form-b-holder">
+        <div class="round-b" id="form-b"></div>
+      </div>
+      <div id="form-b-holder">
+        <div class="round-b" id="empty-b"></div>
+      </div>
+    </div>
+  </div>
+  
+
+    <!--Misc Utils-->
+  <script src="js/misc/canvasfilters/filters.js"></script>
+  <script src="js/misc/pixelit/dist/pixelit.js"></script>
+  <script src="js/misc/pixelate.js"></script>
+  <script src="js/misc/FileSaver.min.js"></script>
+  <script src="js/misc/merge-images.js"></script> 
+  <script src="/js/pixi.min.js"></script>
+  <script src="/js/pixi-sound.js"></script>
+  <script src="/js/sounds.js"></script>
+  <script src="/js/utils/zepto-fastclick.js"></script>
+  <script src="/js/utils/emojis/emojis3.js"></script>
+  <script src="/js/utils/utils.js"></script>
+  <script src="/js/toaja-chat.js"></script>
+<!--   <script src="/js/bundle.js"></script>  -->
+</body>
+
+</html>
